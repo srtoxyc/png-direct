@@ -1,0 +1,132 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.login-box {
+    width: 300px;
+    height: 450px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 20px;
+
+    border: 2px solid var(--main-color2);
+    border-radius: 8px;
+}
+
+.login-title {
+    font-size: 34px;
+    font-weight: 400;
+
+    user-select: none;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 10px;
+}
+
+.login-input-box input {
+    width: 200px;
+    height: 30px;
+
+    padding: 0 10px;
+
+    background: transparent;
+    border: 2px solid #ffffff49;
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-family: 'Lexend-Light';
+
+    outline: none;
+
+    transition: .5s;
+}
+
+.login-input-box input:hover {
+    transition: .5s;
+
+    border: 2px solid #ffffff73;
+}
+
+.login-input-box input:focus {
+    transition: .5s;
+
+    border: 2px solid var(--main-color2);
+}
+
+.toggle-login {
+    margin-top: -10px;
+
+    font-size: 12px;
+    font-family: 'Lexend-ExtraLight';
+
+    opacity: 60%;
+
+    user-select: none;
+
+    transition: .5s;
+}
+
+.toggle-login:hover {
+    cursor: pointer;
+    transition: .5s;
+
+    opacity: 100%;
+}
+
+.login-button {
+    width: 120px;
+    height: 35px;
+
+    margin-top: 5px;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    background: var(--main-color2);
+    border: none;
+    border-radius: 8px;
+    
+    font-size: 14px;
+    font-family: 'Lexend-Bold';
+
+    outline: none;
+
+    transition: .5s;
+}
+
+.login-button:hover {
+    cursor: pointer;
+    transition: .5s;
+
+    background: var(--main-color2-bright);
+}
