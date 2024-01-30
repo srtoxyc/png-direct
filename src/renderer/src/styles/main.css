@@ -1,0 +1,120 @@
+@font-face {
+	font-family: 'Lexend-Black';
+	src: url(./assets/fonts/Lexend-Black.ttf);
+}
+
+@font-face {
+	font-family: 'Lexend-Bold';
+	src: url(./assets/fonts/Lexend-Bold.ttf);
+}
+
+@font-face {
+	font-family: 'Lexend-ExtraBold';
+	src: url(./assets/fonts/Lexend-ExtraBold.ttf);
+}
+
+@font-face {
+	font-family: 'Lexend-ExtraLight';
+	src: url(./assets/fonts/Lexend-ExtraLight.ttf);
+}
+
+@font-face {
+	font-family: 'Lexend-Light';
+	src: url(./assets/fonts/Lexend-Light.ttf);
+}
+
+@font-face {
+	font-family: 'Lexend-Medium';
+	src: url(./assets/fonts/Lexend-Medium.ttf);
+}
+
+@font-face {
+	font-family: 'Lexend-Regular';
+	src: url(./assets/fonts/Lexend-SemiBold.ttf);
+}
+
+@font-face {
+	font-family: 'Lexend-Thin';
+	src: url(./assets/fonts/Lexend-Thin.ttf);
+}
+
+@font-face {
+	font-family: 'Valorant';
+	src: url(./assets/fonts/Valorant.ttf);
+}
+
+@font-face {
+	font-family: 'ArcaMajora3-Bold';
+	src: url(./assets/fonts/ArcaMajora3-Bold.otf);
+}
+
+@font-face {
+	font-family: 'ArcaMajora3-Heavy';
+	src: url(./assets/fonts/ArcaMajora3-Heavy.otf);
+}
+
+:root {
+    --main-color1: #1F2D3D;
+    --main-color2: #007ACC;
+    --main-color3: #F18E33;
+    --main-color4: #8250A1;
+
+    --main-gradient: linear-gradient(45deg, #1F2D3D, #007ACC, #F18E33, #8250A1);
+
+	--main-text: #ffffffe7;
+	--contrast-text: #000000;
+	
+	--main-bg: #121212;
+	--selection-bg: #007ACC2c;
+	
+	/* ====================== */
+
+	font-family: 'ArcaMajora3-Bold', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1;
+	font-weight: 100;
+
+	color-scheme: light dark;
+	color: var(--main-text);
+
+	background: var(--main-bg);
+}
+
+#root{
+	width: 100vw;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*::selection {
+	background-color: var(--selection-bg);
+	border-radius: 6px;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+
+	overflow-x: hidden;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+}
+
+h3 {
+	font-weight: 100;
+}
