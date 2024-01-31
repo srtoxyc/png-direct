@@ -1,0 +1,70 @@
+.account-card {
+    height: 80px;
+    width: 250px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+    padding: 10px;
+
+    background-color: #ffffff13;
+
+    border: 1px solid #ffffff7e;
+    border-radius: 8px;
+
+    transition: .5s;
+}
+
+.account-card:hover {
+    cursor: pointer;
+    transition: .5s;
+
+    transform: translateY(-5px);
+    background-color: #ffffff15;
+    filter: drop-shadow(0px 5px 10px #000000);
+}
+
+.account-mark {
+    height: 20px;
+    width: 100%;
+
+    border-radius: 6px;
+
+    background-color: var(--main-color2);
+
+    transition: .5s;
+}
+
+.account-card:hover .account-mark {
+    transition: .5s;
+
+    background-color: var(--main-color1);
+}
+
+.account-info {
+    height: 45%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 5px;
+
+    font-size: 12px;
+    text-align: start;
+}
+
+.account-phone {
+    font-family: 'Lexend-Light';
+    color: #ffffff52;
+}

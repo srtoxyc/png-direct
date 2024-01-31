@@ -6,9 +6,15 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+
+    width: 100vw;
+    height: 100vh;
 }
 
-.dashboard-nav {
+.dashboard-nav {    
+    width: 22%;
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -17,11 +23,13 @@
     align-items: center;
     align-content: center;
 
-    width: 20%;
-    height: 100%;
+    background: #0e0e0e;
 }
 
 .dashboard-content {
+    width: 78%;
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -29,9 +37,73 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+}
 
-    width: 80%;
-    height: 100%;
+.dashboard-list {
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+
+    gap: 11px;
+
+    list-style: none;
+}
+
+.dashboard-list-element {
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+
+    background: transparent;
+
+    transition: .5s;
+}
+
+.dashboard-list-element a {
+    font-family: 'Lexend';
+    background: linear-gradient(90deg, var(--main-color2), var(--main-color1));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: rgba(0,0,0,1);
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    transition: color .2s ease-in-out;
+    transition: .5s;
+    font-weight: bold;
+    padding-left: 30px;
+
+    user-select: none;
+
+    color: #fff;
+}
+
+.dashboard-list-element:hover a {
+    transition: .5s;
+    cursor: pointer;
+    transform: translateX(10px);
+    color: rgba(0,0,0,0);
+}
+
+.dashboard-list-element:hover {
+    cursor: pointer;
+    transition: .5s;
+
+    background: #ffffff09;
 }
 
 .show {

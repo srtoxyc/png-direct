@@ -84,7 +84,7 @@ function Login({ setLogin, setSession, setAccounts }) {
             }
     
             const result = await res.json();
-            setAccounts(result);
+            setAccounts(result['accounts']);
         } catch (err) {
             console.log(err);
         }
