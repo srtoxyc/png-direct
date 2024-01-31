@@ -12,18 +12,24 @@ function App() {
         if(isLoggedIn !== null && isLoggedIn !== false) {
             console.log(isLoggedIn);
         }
+    }, [isLoggedIn]);
+
+    useEffect(() => {
         if(session !== null) {
             console.log(session);
         }
+    }, [session]);
+
+    useEffect(() => {
         if(accounts !== null) {
             console.log(accounts);
         }
-    }, [isLoggedIn, session, accounts]);
+    }, [accounts]);
 
     return (
         <>
             <Login setLogin={setIsLoggedIn} setSession={setSession} setAccounts={setAccounts} />
-            <Dashboard session={session} accounts={accounts} />
+            <Dashboard login={isLoggedIn} session={session} accounts={accounts} />
         </>
     );
 };

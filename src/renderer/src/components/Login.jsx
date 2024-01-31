@@ -2,66 +2,96 @@ import { useState, useEffect } from 'react';
 import '../styles/Login.css'
 
 function Login({ setLogin, setSession, setAccounts }) {
-    const [isLogin, setIsLogin]     = useState(true);
-    const [username, setUsername]   = useState('');
-    const [email, setEmail]         = useState('');
-    const [password, setPassword]   = useState('');
+    const [isLogin, setIsLogin]         = useState(true);
+    const [username, setUsername]       = useState('');
+    const [email, setEmail]             = useState('');
+    const [password, setPassword]       = useState('');
+    const [isLoggedIn, setIsLoggedIn]   = useState(false);
 
-    function fetchLogin() {
-        fetch(`http://localhost:8080/login?user=${username}&password=${password}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                if(result) {
-                    setLogin(result);
-                    fetchSession();
-                    fetchAccounts();
+    async function fetchLogin() {
+        try {
+            const res = await fetch(`http://localhost:8080/login?user=${username}&password=${password}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
                 }
-            })
-            .catch((err) => console.log(err));
+            });
+    
+            if (!res.ok) {
+                throw new Error('Error en la solicitud de login');
+            }
+    
+            const result = await res.json();
+            setLogin(result);
+            setIsLoggedIn(result);
+            await fetchSession();
+            await fetchAccounts();
+        } catch (err) {
+            console.log(err);
+        }
     }
 
-    function fetchSignUp() {
-        fetch(`http://localhost:8080/signup?username=${username}&email=${email}&password=${password}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
+    async function fetchSignUp() {
+        try {
+            const res = await fetch(`http://localhost:8080/signup?username=${username}&email=${email}&password=${password}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+    
+            if (!res.ok) {
+                throw new Error('Error en la solicitud de registro');
             }
-        })
-            .then((res) => res.json())
-            .catch((err) => console.log(err));
+    
+            const result = await res.json();
+        } catch (err) {
+            console.log(err);
+        }
     }
 
-    function fetchSession() {
-        fetch(`http://localhost:8080/session?user=${username}&password=${password}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
+    async function fetchSession() {
+        try {
+            const res = await fetch(`http://localhost:8080/session?user=${username}&password=${password}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+    
+            if (!res.ok) {
+                throw new Error('Error en la solicitud de sesión');
             }
-        })
-            .then((res) => res.json())
-            .then((result) => setSession(result))
-            .catch((err) => console.log(err));
+    
+            const result = await res.json();
+            setSession(result);
+        } catch (err) {
+            console.log(err);
+        }
     }
 
-    function fetchAccounts() {
-        fetch(`http://localhost:8080/account/list?username=${username}&password=${password}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
+    async function fetchAccounts() {
+        try {
+            const res = await fetch(`http://localhost:8080/account/list?username=${username}&password=${password}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+    
+            if (!res.ok) {
+                throw new Error('Error en la solicitud de cuentas');
             }
-        })
-            .then((res) => res.json())
-            .then((result) => setAccounts(result))
-            .catch((err) => console.log(err));
+    
+            const result = await res.json();
+            setAccounts(result);
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     return (
-        <div className="login">
+        <div className={`login ${!isLoggedIn ? 'show' : 'hide'}`}>
             <div className="login-box">
                 <h2 className="login-title">{isLogin ? 'LOGIN' : 'SIGN UP'}</h2>
                 <form className="login-form">

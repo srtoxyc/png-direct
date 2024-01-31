@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react';
 import '../styles/Dashboard.css'
 
-function Dashboard({ session, accounts }) {
+function Dashboard({ login, session, accounts }) {
 
     return (
-        <div className="dashboard">
+        <div className={`dashboard ${login ? 'show' : 'hide'}`}>
+            <nav className="dashboard-nav">
+
+            </nav>
+            <section className="dashboard-content">
+
+            </section>
         </div>
     );
 };

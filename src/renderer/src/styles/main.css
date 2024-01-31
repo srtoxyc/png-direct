@@ -119,11 +119,3 @@ a {
 h3 {
 	font-weight: 100;
 }
-
-.show {
-	display: flex;
-}
-
-.hide {
-	display: none;
-}

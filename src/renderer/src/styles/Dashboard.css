@@ -1,0 +1,43 @@
+.dashboard {
+    display: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.dashboard-nav {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    width: 20%;
+    height: 100%;
+}
+
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    width: 80%;
+    height: 100%;
+}
+
+.show {
+	display: flex;
+}
+
+.hide {
+	display: none;
+}
