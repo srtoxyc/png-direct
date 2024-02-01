@@ -74,3 +74,7 @@
     font-family: 'Lexend-Light';
     color: #ffffff52;
 }
+
+.account-card[active="true"] .account-mark {
+    background-color: var(--selected-account);
+}

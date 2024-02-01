@@ -28,9 +28,9 @@ function Dashboard({ login, session, accounts }) {
                 </ul>
             </nav>
             <section className="dashboard-content">
-                <StartPage login={login} session={session} accounts={accounts} section={section} setAccount={setAccount} />
-                <ProfilePage login={login} session={session} accounts={accounts} section={section} />
-                <BizumPage login={login} session={session} accounts={accounts} section={section} />
+                <StartPage session={session} accounts={accounts} section={section} setAccount={setAccount} />
+                <ProfilePage session={session} section={section} />
+                <BizumPage session={session} account={account} section={section} />
             </section>
         </div>
     );
