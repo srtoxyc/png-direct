@@ -56,9 +56,12 @@
 :root {
     --main-color1: #00ccff;
     --main-color2: #0074e0;
-    --main-color2-bright: #017ff5;
-    --main-color3: #F18E33;
-    --main-color4: #8250A1;
+    --main-color3: #158eff;
+	--main-color1-bright: #00ccff15;
+    --main-color2-bright: #0074e015;
+    --main-color3-bright: #158eff15;
+	
+	--selected-account: #13e624;
 
     --main-gradient: linear-gradient(45deg, #007ACC, #F18E33, #8250A1);
 

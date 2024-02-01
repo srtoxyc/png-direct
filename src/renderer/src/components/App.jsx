@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/App.css'
 
 import Login from './Login.jsx'
 import Dashboard from './Dashboard.jsx'
@@ -29,7 +30,7 @@ function App() {
     return (
         <>
             <Login setLogin={setIsLoggedIn} setSession={setSession} setAccounts={setAccounts} />
-            <Dashboard login={isLoggedIn} session={session} accounts={accounts} />
+            {accounts != null ? <Dashboard login={isLoggedIn} session={session} accounts={accounts} /> : <div className="loading">Loading...</div>}
         </>
     );
 };

@@ -6,11 +6,8 @@ import ProfilePage from './ProfilePage.jsx'
 import BizumPage from './BizumPage'
 
 function Dashboard({ login, session, accounts }) {
-    // if(!accounts || !Array.isArray(accounts)) {
-    //     return <div className="loading">Loading...</div>
-    // }
-
     const [section, setSection] = useState('profile');
+    const [account, setAccount] = useState(null);
 
     return (
         <div className={`dashboard ${login ? 'show' : 'hide'}`}>
@@ -31,7 +28,7 @@ function Dashboard({ login, session, accounts }) {
                 </ul>
             </nav>
             <section className="dashboard-content">
-                <StartPage login={login} session={session} accounts={accounts} section={section} />
+                <StartPage login={login} session={session} accounts={accounts} section={section} setAccount={setAccount} />
                 <ProfilePage login={login} session={session} accounts={accounts} section={section} />
                 <BizumPage login={login} session={session} accounts={accounts} section={section} />
             </section>

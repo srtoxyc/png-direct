@@ -128,5 +128,7 @@
     cursor: pointer;
     transition: .5s;
 
-    background: var(--main-color2-bright);
+    background: var(--main-color3);
+    transform: translateY(-2px);
+    filter: drop-shadow(0px 0px 10px var(--main-color3-bright))
 }
