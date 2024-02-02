@@ -1,36 +1,42 @@
 import { useState, useEffect } from 'react';
 import '../styles/Dashboard.css'
 
-import StartPage from './StartPage.jsx'
-import ProfilePage from './ProfilePage.jsx'
-import BizumPage from './BizumPage'
+import BizumPage from './BizumPage.jsx'
+
+import { FaRegUser } from "react-icons/fa";
+import { MdAccountBalanceWallet } from "react-icons/md";
+import { GiTwoCoins } from "react-icons/gi";
 
 function Dashboard({ login, session, accounts }) {
-    const [section, setSection] = useState('profile');
     const [account, setAccount] = useState(null);
 
     return (
         <div className={`dashboard ${login ? 'show' : 'hide'}`}>
             <nav className="dashboard-nav">
                 <div className="dashboard-nav-logo">
-                    <img className="dashboard-logo"></img>
+                    <img className="dashboard-logo" />
                 </div>
-                <ul className="dashboard-list">
-                    <li onClick={() => setSection('start')} className="dashboard-list-element">
-                        <a href="#">Start</a>
-                    </li>
-                    <li onClick={() => setSection('profile')}  className="dashboard-list-element">
-                        <a href="#">Profile</a>
-                    </li>
-                    <li onClick={() => setSection('bizum')}  className="dashboard-list-element">
-                        <a href="#">Bizum</a>
-                    </li>
-                </ul>
+                <div className="dashboard-user-box">
+                    <FaRegUser className="dashboard-user-icon" />
+                    <div className="dashboard-user-info">
+                        <h3 className="dashboard-user-name">{session['username']}</h3>
+                        <h3 className="dashboard-user-email">{session['email']}</h3>
+                    </div>
+                </div>
+                <div className="dashboard-account-box">
+                    <MdAccountBalanceWallet className="dashboard-account-icon" />
+                    <div className="dashboard-account-info">
+                        <h3 className="dashboard-account-num">{account != null ? account['accountNum'] : ''}</h3>
+                        <h3 className="dashboard-account-phone">{account != null ? account['phoneNumber'] : ''}</h3>
+                    </div>
+                </div>
+                <div className="dashboard-money-box">
+                    <GiTwoCoins className="dashboard-money-icon" />
+                    <h3 className="dashboard-money-amount">{account != null ? account['money'] : ''}</h3>
+                </div>
             </nav>
             <section className="dashboard-content">
-                <StartPage session={session} accounts={accounts} section={section} setAccount={setAccount} />
-                <ProfilePage session={session} section={section} />
-                <BizumPage session={session} account={account} section={section} />
+                <BizumPage session={session} accounts={accounts} setAccount={setAccount} />
             </section>
         </div>
     );

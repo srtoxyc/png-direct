@@ -1,9 +1,18 @@
 import { useState, useEffect } from 'react';
 import '../styles/BizumPage.css'
 
-function BizumPage({ session, account, section }) {
+import AccountCard from './AccountCard.jsx'
+
+function BizumPage({ session, accounts, setAccount }) {
+    const [currentAccount, setCurrentAccount] = useState(null);
+
     return (
-        <div className={`bizum-page ${section === 'bizum' ? 'show' : 'hide'}`}>
+        <div className={`start-page`}>
+            <ul className="start-accounts">
+                {accounts != null ? accounts.map((account) => (
+                    <AccountCard session={session} setAccount={setAccount} account={account} currentAccount={currentAccount} setCurrentAccount={setCurrentAccount} />
+                )) : <div className="loading">Loading...</div>}
+            </ul>
         </div>
     );
 };
