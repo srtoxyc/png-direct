@@ -19,7 +19,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
 
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     align-content: center;
 
@@ -39,9 +39,26 @@
     align-content: center;
 }
 
-.dashboard-user-box, .dashboard-account-box, .dashboard-money-box {
+.dashboard-logo {
+    width: 140px;
+}
+
+.dashboard-info-box {
     width: 100%;
-    height: 10%;
+    height: 25%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.dashboard-user-box, .dashboard-account-box, .dashboard-money-box {
+    width: 80%;
+    height: 33%;
 
     display: flex;
     flex-direction: row;
@@ -51,14 +68,11 @@
     align-items: center;
     align-content: center;
 
-    padding-left: 20%;
-
     gap: 15px;
 }
 
 .dashboard-user-icon, .dashboard-account-icon, .dashboard-money-icon {
-    width: 15%;
-    height: 100%;
+    font-size: 30px;
 
     color: var(--main-color2);
 }
@@ -96,6 +110,37 @@
     font-family: 'Lexend-Light';
     font-size: 10px;
     color: #ffffff50;
+}
+
+.logout-button {
+    width: 92%;
+    height: 60px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    margin: 10px;
+
+    background: #2c0f0f;
+    border: 1px solid #810000;
+    border-radius: 6px;
+
+    gap: 10px;
+
+    transition: .5s;
+}
+
+.logout-button:hover {
+    cursor: pointer;
+    transition: .5s;
+    
+    background: #3d0000;
+    transform: translateY(-2px);
 }
 
 .show {
