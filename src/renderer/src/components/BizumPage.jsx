@@ -13,6 +13,24 @@ function BizumPage({ session, accounts, setAccount }) {
                     <AccountCard session={session} setAccount={setAccount} account={account} currentAccount={currentAccount} setCurrentAccount={setCurrentAccount} />
                 )) : <div className="loading">Loading...</div>}
             </ul>
+            <div className="bizum-form-box">
+                <h2 className="bizum-title">BIZUM</h2>
+                <form className="bizum-form">
+                    <div className="bizum-input-box bizum-phone">
+                        <input type="text" required={true} placeholder="Phone Number" />
+                    </div>
+                    <div className={`bizum-input-box bizum-amount`}>
+                        <input type="text" required={true} placeholder="Money" />
+                    </div>
+                    <div className="bizum-input-box bizum-password">
+                        <input type="password" required={true} placeholder="Password" />
+                    </div>
+                </form>
+                <div className="bizum-button">
+                    <h3 className="bizum-button-text">Send Bizum</h3>
+                </div>
+            </div>
+
         </div>
     );
 };

@@ -9,10 +9,12 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+
+    gap: 30px;
 }
 
 .start-accounts {
-    height: 40%;
+    height: 18%;
     width: 100%;
 
     display: flex;
@@ -20,10 +22,121 @@
     flex-wrap: nowrap;
 
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     align-content: center;
 
     gap: 20px;
 
     list-style: none;
+}
+
+.bizum-form-box {
+    height: 50%;
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 20px;
+
+    border-radius: 10px;
+
+    background: var(--bizum-bg);
+
+    border: 1px solid var(--main-border);
+}
+
+.bizum-form-box:hover {
+    transition: .5s;
+
+    border: 1px solid var(--main-color2);
+}
+
+.bizum-title {
+    font-size: 34px;
+    font-weight: 400;
+
+    user-select: none;
+}
+
+.bizum-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    gap: 10px;
+}
+
+.bizum-input-box input {
+    width: 200px;
+    height: 30px;
+
+    padding: 0 10px;
+
+    background: transparent;
+    border: 2px solid var(--main-input-border);
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-family: 'Lexend-Light';
+
+    outline: none;
+
+    transition: .5s;
+}
+
+.bizum-input-box input:hover {
+    transition: .5s;
+
+    border: 2px solid var(--main-input-border-hover);
+}
+
+.bizum-input-box input:focus {
+    transition: .5s;
+
+    border: 2px solid var(--main-color2);
+}
+
+.bizum-button {
+    width: 120px;
+    height: 35px;
+
+    margin-top: 5px;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    background: var(--main-color2);
+    border: none;
+    border-radius: 8px;
+    
+    font-size: 12px;
+    font-family: 'Lexend-Bold';
+
+    outline: none;
+
+    transition: .5s;
+}
+
+.bizum-button:hover {
+    cursor: pointer;
+    transition: .5s;
+
+    background: var(--main-color3);
+    transform: translateY(-2px);
+    filter: drop-shadow(0px 0px 10px var(--main-color3-bright))
 }

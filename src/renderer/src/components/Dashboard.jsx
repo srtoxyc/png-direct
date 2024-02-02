@@ -10,8 +10,8 @@ import { MdAccountBalanceWallet } from "react-icons/md";
 import { GiTwoCoins } from "react-icons/gi";
 
 function Dashboard({ login, session, accounts }) {
-    const [account, setAccount] = useState(null);
-
+    const [account, setAccount]             = useState(null);
+ 
     return (
         <div className={`dashboard ${login ? 'show' : 'hide'}`}>
             <nav className="dashboard-nav">

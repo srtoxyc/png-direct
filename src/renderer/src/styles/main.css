@@ -60,16 +60,29 @@
 	--main-color1-bright: #00ccff15;
     --main-color2-bright: #0074e015;
     --main-color3-bright: #158eff15;
+
+	--main-border: #ffffff93;
+	--main-input-border: #ffffff49;
+	--main-input-border-hover: #ffffff73;
 	
 	--selected-account: #13e624;
-
-    --main-gradient: linear-gradient(45deg, #007ACC, #F18E33, #8250A1);
+	--logout-bg: #2c0f0f;
+	--logout-bg-hover: #3d0000;
+	--logout-border: #810000;
 
 	--main-text: #ffffffe7;
-	--contrast-text: #000000;
+	--contrast-text: #ffffff50;
 	
 	--main-bg: #121212;
+	--navbar-bg: #0e0e0e;
 	--selection-bg: #007ACC2c;
+
+	--bizum-bg: #0000005b;
+
+	--account-shadow: #000000;
+
+	--custom-alert-bg: #0e0e0ec7;
+	--custom-alert-shadow: #000000d0;
 	
 	/* ====================== */
 

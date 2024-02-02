@@ -55,7 +55,7 @@
     padding: 0 10px;
 
     background: transparent;
-    border: 2px solid #ffffff49;
+    border: 2px solid var(--main-input-border);
     border-radius: 8px;
 
     font-size: 12px;
@@ -69,7 +69,7 @@
 .login-input-box input:hover {
     transition: .5s;
 
-    border: 2px solid #ffffff73;
+    border: 2px solid var(--main-input-border-hover);
 }
 
 .login-input-box input:focus {

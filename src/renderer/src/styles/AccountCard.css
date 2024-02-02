@@ -14,8 +14,10 @@
 
     background-color: #ffffff13;
 
-    border: 1px solid #ffffff7e;
+    border: 1px solid var(--main-border);
     border-radius: 8px;
+
+    z-index: 1;
 
     transition: .5s;
 }
@@ -26,7 +28,7 @@
 
     transform: translateY(-5px);
     background-color: #ffffff15;
-    filter: drop-shadow(0px 5px 10px #000000);
+    filter: drop-shadow(0px 5px 10px var(--account-shadow));
 }
 
 .account-card:active {
@@ -72,7 +74,7 @@
 
 .account-phone {
     font-family: 'Lexend-Light';
-    color: #ffffff52;
+    color: var(--contrast-text);
 }
 
 .account-card[active="true"] .account-mark {
