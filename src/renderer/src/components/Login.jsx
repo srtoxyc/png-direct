@@ -18,7 +18,7 @@ function Login({ setLogin, setSession, setAccounts }) {
             });
     
             if (!res.ok) {
-                throw new Error('Error en la solicitud de login');
+                throw new Error('Error en la solicitud de inicio de sesión.');
             }
     
             const result = await res.json();
@@ -41,7 +41,7 @@ function Login({ setLogin, setSession, setAccounts }) {
             });
     
             if (!res.ok) {
-                throw new Error('Error en la solicitud de registro');
+                throw new Error('Error en la solicitud de registro.');
             }
     
             const result = await res.json();
@@ -60,7 +60,7 @@ function Login({ setLogin, setSession, setAccounts }) {
             });
     
             if (!res.ok) {
-                throw new Error('Error en la solicitud de sesión');
+                throw new Error('Error en la solicitud de sesión del usuario.');
             }
     
             const result = await res.json();
@@ -80,7 +80,7 @@ function Login({ setLogin, setSession, setAccounts }) {
             });
     
             if (!res.ok) {
-                throw new Error('Error en la solicitud de cuentas');
+                throw new Error('Error en la solicitud de cuentas.');
             }
     
             const result = await res.json();

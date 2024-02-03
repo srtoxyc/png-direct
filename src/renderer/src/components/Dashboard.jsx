@@ -41,7 +41,7 @@ function Dashboard({ login, session, accounts }) {
                 </div>
             </nav>
             <section className="dashboard-content">
-                <BizumPage session={session} accounts={accounts} setAccount={setAccount} />
+                <BizumPage session={session} accounts={accounts} account={account} setAccount={setAccount} />
             </section>
         </div>
     );

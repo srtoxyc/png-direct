@@ -29,7 +29,7 @@ function AccountCard({session, account, setAccount, currentAccount, setCurrentAc
             });
     
             if (!res.ok) {
-                throw new Error('Error en la solicitud de cuentas');
+                throw new Error('Error en la solicitud de cuenta.');
             }
             
             try {
