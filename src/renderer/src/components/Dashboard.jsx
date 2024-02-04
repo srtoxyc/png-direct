@@ -9,8 +9,14 @@ import { FaRegUser } from "react-icons/fa";
 import { MdAccountBalanceWallet } from "react-icons/md";
 import { GiTwoCoins } from "react-icons/gi";
 
-function Dashboard({ login, session, accounts }) {
+function Dashboard({ login, setLogin, session, setSession, accounts, setAccounts }) {
     const [account, setAccount]             = useState(null);
+
+    function logout() {
+        setLogin(false);
+        setSession(null);
+        setAccounts(null);
+    }
  
     return (
         <div className={`dashboard ${login ? 'show' : 'hide'}`}>
@@ -36,7 +42,7 @@ function Dashboard({ login, session, accounts }) {
                         <h3 className="dashboard-money-amount">{account != null ? account['money'] + " €" : ''}</h3>
                     </div>
                 </div>
-                <div className="logout-button">
+                <div onClick={() => logout()} className="logout-button">
                     <h3 className="logout-button-text">Log out</h3>
                 </div>
             </nav>

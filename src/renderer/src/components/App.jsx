@@ -12,7 +12,7 @@ function App() {
     return (
         <>
             <Login setLogin={setIsLoggedIn} setSession={setSession} setAccounts={setAccounts} />
-            {accounts != null ? <Dashboard login={isLoggedIn} session={session} accounts={accounts} /> : <div className="loading">Loading...</div>}
+            {accounts != null ? <Dashboard login={isLoggedIn} setLogin={setIsLoggedIn} session={session} setSession={setSession} accounts={accounts} setAccounts={setAccounts}/> : <div className="loading">Loading...</div>}
         </>
     );
 };

@@ -83,8 +83,12 @@ function Login({ setLogin, setSession, setAccounts }) {
                 throw new Error('Error en la solicitud de cuentas.');
             }
     
-            const result = await res.json();
-            setAccounts(result['accounts']);
+            try {
+                const result = await res.json();
+                setAccounts(result['accounts']);
+            } catch(err) {
+                setAccounts([]);
+            }
         } catch (err) {
             console.log(err);
         }
