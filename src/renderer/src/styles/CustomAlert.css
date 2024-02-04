@@ -1,6 +1,27 @@
-.alert {
-	position: absolute;
+.alert-box {
+    position: absolute;
 
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    top: 0%;
+    left: 0%;
+
+    background: #000000bb;
+    backdrop-filter: blur(10px);
+
+    z-index: 4;
+}
+
+.alert {
 	width: 350px;
 	height: 200px;
 

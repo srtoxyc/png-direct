@@ -9,24 +9,6 @@ function App() {
     const [session, setSession]             = useState(null);
     const [accounts, setAccounts]           = useState(null);
 
-    useEffect(() => {
-        if(isLoggedIn !== null && isLoggedIn !== false) {
-            console.log(isLoggedIn);
-        }
-    }, [isLoggedIn]);
-
-    useEffect(() => {
-        if(session !== null) {
-            console.log(session);
-        }
-    }, [session]);
-
-    useEffect(() => {
-        if(accounts !== null) {
-            console.log(accounts);
-        }
-    }, [accounts]);
-
     return (
         <>
             <Login setLogin={setIsLoggedIn} setSession={setSession} setAccounts={setAccounts} />

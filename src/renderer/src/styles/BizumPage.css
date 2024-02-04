@@ -34,6 +34,8 @@
     height: 50%;
     width: 50%;
 
+    position: relative;
+
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -144,8 +146,24 @@
 }
 
 .state-text {
+    position: absolute;
+
+    visibility: hidden;
+
+    bottom: 20px;
+
     font-size: 12px;
     font-family: 'Lexend-ExtraLight';
 
     user-select: none;
+
+    transition: .5s;
+}
+
+.state-text[state="success"] {
+    color: #59ec14;
+}
+
+.state-text[state="error"] {
+    color: #ff3535;
 }

@@ -10,9 +10,9 @@ function BizumPage({ session, accounts, account, setAccount }) {
     const [money, setMoney]                     = useState(null);
 
     const [stateMSG, setStateMSG]               = useState(null);
-    const [stateController, setStateController] = useState(null);
+    const [stateController, setStateController] = useState(false);
 
-    useEffect(() => { console.log(receptorPhone); }, [receptorPhone]);
+    useEffect(() => { console.log(stateMSG)}, [stateMSG]);
 
     async function fetchBizum() {
         try {
@@ -27,20 +27,30 @@ function BizumPage({ session, accounts, account, setAccount }) {
                 throw new Error('Error en la solicitud de bizum.');
             }
     
-            const result = await res.text();
-            fetchAccount();
-            
+            const result = await res.text(); 
+
             switch(result) {
-                case 0:
+                case '0':
+                    setStateController(true);
                     setStateMSG('Bizum sent successfully.');
                     break;
-                case -7:
+                case '-7':
+                    setStateController(false);
                     setStateMSG('We are facing some problems. Try again later.');
                     break;
-                case -9:
+                case '-9':
+                    setStateController(false);
                     setStateMSG('Wrong phone number.');
                     break;
             }
+
+            fetchAccount();
+            
+            document.querySelector('.state-text').style.visibility = 'visible';
+
+            setTimeout(() => {
+                document.querySelector('.state-text').style.visibility = 'hidden';
+            }, 4000);
         } catch (err) {
             console.log(err);
         }
@@ -93,7 +103,7 @@ function BizumPage({ session, accounts, account, setAccount }) {
                 <div onClick={() => fetchBizum()} className="bizum-button">
                     <h3 className="bizum-button-text">Send Bizum</h3>
                 </div>
-                <h4 className={`state-text`}>{stateMSG != null ? stateMSG : "eeeeeeeeeeeeeeeee"}</h4>
+                <h4 className="state-text" state={stateController ? 'success' : 'error'}>{stateMSG}</h4>
             </div>
         </div>
     );
