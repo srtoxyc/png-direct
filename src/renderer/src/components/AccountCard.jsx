@@ -3,7 +3,7 @@ import '../styles/AccountCard.css'
 
 import CustomAlert from './CustomAlert.jsx'
 
-function AccountCard({session, account, setAccount, currentAccount, setCurrentAccount}) {
+function AccountCard({session, account, setAccount, currentAccount, setCurrentAccount, setStateMSG, setStateController}) {
     const [showAlert, setShowAlert]         = useState(false);
     const [inputValue, setInputValue]       = useState('');
     
@@ -11,8 +11,17 @@ function AccountCard({session, account, setAccount, currentAccount, setCurrentAc
         if(inputValue !== '') {
             fetchAccount();
         } else {
-            console.log('No password entered');
+            setStateController(false);
+            setStateMSG('No password entered.');
         }
+        
+        document.querySelector('.state-text').style.visibility = 'visible';
+        
+        setTimeout(() => {
+            document.querySelector('.state-text').style.visibility = 'hidden';
+        }, 4000);
+
+        setShowAlert(false);
     }
 
     function handleCancelClick() {
@@ -36,10 +45,19 @@ function AccountCard({session, account, setAccount, currentAccount, setCurrentAc
                 const result = await res.json();
                 setAccount(result);
                 setCurrentAccount(result['accountNum']);
-                setShowAlert(false);
             } catch (err) {
-                console.log(err);
+                setStateController(false);
+                setStateMSG('Wrong password.');
             }
+            
+            document.querySelector('.state-text').style.visibility = 'visible';
+            
+            setTimeout(() => {
+                document.querySelector('.state-text').style.visibility = 'hidden';
+            }, 4000);
+
+            setInputValue('');
+            setShowAlert(false);
         } catch (err) {
             console.log(err);
         }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import '../styles/BizumPage.css'
 
 import AccountCard from './AccountCard.jsx'
+import CustomAlertAccounts from './CustomAlertAccounts.jsx';
 
 function BizumPage({ session, accounts, account, setAccount }) {
     const [currentAccount, setCurrentAccount]   = useState(null);
@@ -11,8 +12,36 @@ function BizumPage({ session, accounts, account, setAccount }) {
 
     const [stateMSG, setStateMSG]               = useState(null);
     const [stateController, setStateController] = useState(false);
+    const [showAlert, setShowAlert]             = useState(false);
 
-    useEffect(() => { console.log(stateMSG)}, [stateMSG]);
+    const [inputPhoneValue, setInputPhoneValue] = useState('');
+    const [inputPassValue, setInputPassValue]   = useState('');
+
+    useEffect(() => {console.log(inputPhoneValue); console.log(inputPassValue);}, [inputPassValue, inputPhoneValue]);
+    
+    function handleConfirmClick() {
+        if(inputPhoneValue !== '' && inputPassValue !== '') {
+            fetchAccountCreation();
+        } else if(inputPhoneValue === '') {
+            setStateController(false);
+            setStateMSG('No phone number entered.');
+        } else if(inputPassValue === '') {
+            setStateController(false);
+            setStateMSG('No password entered.');
+        }
+
+        document.querySelector('.state-text').style.visibility = 'visible';
+
+        setTimeout(() => {
+            document.querySelector('.state-text').style.visibility = 'hidden';
+        }, 4000);
+        
+        setShowAlert(false);
+    }
+
+    function handleCancelClick() {
+        setShowAlert(false);
+    }
 
     async function fetchBizum() {
         try {
@@ -30,15 +59,15 @@ function BizumPage({ session, accounts, account, setAccount }) {
             const result = await res.text(); 
 
             switch(result) {
-                case '0':
+                case '0' || 0:
                     setStateController(true);
                     setStateMSG('Bizum sent successfully.');
                     break;
-                case '-7':
+                case '-7' || -7:
                     setStateController(false);
                     setStateMSG('We are facing some problems. Try again later.');
                     break;
-                case '-9':
+                case '-9' || -9:
                     setStateController(false);
                     setStateMSG('Wrong phone number.');
                     break;
@@ -73,6 +102,93 @@ function BizumPage({ session, accounts, account, setAccount }) {
                 const result = await res.json();
                 setAccount(result);
             } catch (err) {
+                setStateController(false);
+                setStateMSG('Wrong password.');
+            }
+
+            document.querySelector('.state-text').style.visibility = 'visible';
+
+            setTimeout(() => {
+                document.querySelector('.state-text').style.visibility = 'hidden';
+            }, 4000);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async function fetchAccountCreation() {
+        await fetchPhoneAddition();
+
+        try {
+            const res = await fetch(`http://localhost:8080/account/create?username=${session['username']}&password=${inputPassValue}&number=${inputPhoneValue}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+    
+            if (!res.ok) {
+                throw new Error('Error en la creación de la cuenta.');
+            }
+            
+            try {
+                const result = await res.json();
+
+                switch(result) {
+                    case '-7' || -7:
+                        setStateController(false);
+                        setStateMSG('We are facing some problems. Try again later.');
+                        break;
+                    case '-4' || -4:
+                        setStateController(false);
+                        setStateMSG('Wrong password.');
+                        break;
+                }
+
+                document.querySelector('.state-text').style.visibility = 'visible';
+
+                setTimeout(() => {
+                    document.querySelector('.state-text').style.visibility = 'hidden';
+                }, 4000);
+
+                setShowAlert(false);
+            } catch (err) {
+                console.log(err);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async function fetchPhoneAddition() {
+        try {
+            const res = await fetch(`http://localhost:8080/assignPhoneNumber?username=${session['username']}&password=${inputPassValue}&number=${inputPhoneValue}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+    
+            if (!res.ok) {
+                throw new Error('Error en la asignación del número de teléfono.');
+            }
+            
+            try {
+                const result = await res.json();
+
+                switch(result) {
+                    case '-7' || -7:
+                        setStateController(false);
+                        setStateMSG('We are facing some problems. Try again later.');
+                        break;
+                }
+
+                document.querySelector('.state-text').style.visibility = 'visible';
+
+                setTimeout(() => {
+                    document.querySelector('.state-text').style.visibility = 'hidden';
+                }, 4000);
+            } catch (err) {
                 console.log(err);
             }
         } catch (err) {
@@ -84,9 +200,14 @@ function BizumPage({ session, accounts, account, setAccount }) {
         <div className={`start-page`}>
             <ul className="start-accounts">
                 {accounts != null ? accounts.map((account) => (
-                    <AccountCard session={session} setAccount={setAccount} account={account} currentAccount={currentAccount} setCurrentAccount={setCurrentAccount} />
+                    <AccountCard session={session} setAccount={setAccount} account={account} currentAccount={currentAccount} setCurrentAccount={setCurrentAccount} setStateMSG={setStateMSG} setStateController={setStateController} />
                 )) : <div className="loading">Loading...</div>}
             </ul>
+
+            <div onClick={() => setShowAlert(true)} className="account-button">
+                <h3 className="account-button-text">Create account</h3>
+            </div>
+
             <div className="bizum-form-box">
                 <h2 className="bizum-title">BIZUM</h2>
                 <form className="bizum-form">
@@ -104,7 +225,16 @@ function BizumPage({ session, accounts, account, setAccount }) {
                     <h3 className="bizum-button-text">Send Bizum</h3>
                 </div>
                 <h4 className="state-text" state={stateController ? 'success' : 'error'}>{stateMSG}</h4>
-            </div>
+            </div>        
+            {showAlert ? <CustomAlertAccounts
+                title="Create an account"
+                button1Text="Confirm"
+                button2Text="Cancel"
+                button1OnClick={handleConfirmClick}
+                button2OnClick={handleCancelClick}
+                setInput1Value={setInputPhoneValue}
+                setInput2Value={setInputPassValue}
+            /> : <div/>}
         </div>
     );
 };

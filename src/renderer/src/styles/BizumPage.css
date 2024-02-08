@@ -110,7 +110,7 @@
     border: 2px solid var(--main-color2);
 }
 
-.bizum-button {
+.bizum-button, .account-button {
     width: 120px;
     height: 35px;
 
@@ -127,6 +127,8 @@
     background: var(--main-color2);
     border: none;
     border-radius: 8px;
+
+    padding: 2px;
     
     font-size: 12px;
     font-family: 'Lexend-Bold';
@@ -136,7 +138,7 @@
     transition: .5s;
 }
 
-.bizum-button:hover {
+.bizum-button:hover, .account-button:hover {
     cursor: pointer;
     transition: .5s;
 

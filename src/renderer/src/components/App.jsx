@@ -11,7 +11,7 @@ function App() {
 
     return (
         <>
-            <Login setLogin={setIsLoggedIn} setSession={setSession} setAccounts={setAccounts} />
+            {!isLoggedIn ? <Login setLogin={setIsLoggedIn} setSession={setSession} setAccounts={setAccounts} /> : <div/>}
             {accounts != null ? <Dashboard login={isLoggedIn} setLogin={setIsLoggedIn} session={session} setSession={setSession} accounts={accounts} setAccounts={setAccounts}/> : <div className="loading">Loading...</div>}
         </>
     );
