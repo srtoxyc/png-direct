@@ -16,8 +16,6 @@ function BizumPage({ session, accounts, account, setAccount }) {
 
     const [inputPhoneValue, setInputPhoneValue] = useState('');
     const [inputPassValue, setInputPassValue]   = useState('');
-
-    useEffect(() => {console.log(inputPhoneValue); console.log(inputPassValue);}, [inputPassValue, inputPhoneValue]);
     
     function handleConfirmClick() {
         if(inputPhoneValue !== '' && inputPassValue !== '') {
@@ -59,15 +57,18 @@ function BizumPage({ session, accounts, account, setAccount }) {
             const result = await res.text(); 
 
             switch(result) {
-                case '0' || 0:
+                case '0':
+                case 0:
                     setStateController(true);
                     setStateMSG('Bizum sent successfully.');
                     break;
-                case '-7' || -7:
+                case '-7':
+                case -7:
                     setStateController(false);
                     setStateMSG('We are facing some problems. Try again later.');
                     break;
-                case '-9' || -9:
+                case '-9':
+                case -9:
                     setStateController(false);
                     setStateMSG('Wrong phone number.');
                     break;
@@ -118,7 +119,7 @@ function BizumPage({ session, accounts, account, setAccount }) {
 
     async function fetchAccountCreation() {
         await fetchPhoneAddition();
-
+    
         try {
             const res = await fetch(`http://localhost:8080/account/create?username=${session['username']}&password=${inputPassValue}&number=${inputPhoneValue}`, {
                 method: 'GET',
@@ -130,32 +131,38 @@ function BizumPage({ session, accounts, account, setAccount }) {
             if (!res.ok) {
                 throw new Error('Error en la creación de la cuenta.');
             }
-            
+    
             try {
                 const result = await res.json();
 
+                console.log(result);
+    
                 switch(result) {
-                    case '-7' || -7:
+                    case '-7':
+                    case -7:
                         setStateController(false);
                         setStateMSG('We are facing some problems. Try again later.');
                         break;
-                    case '-4' || -4:
+                    case '-4':
+                    case -4:
                         setStateController(false);
                         setStateMSG('Wrong password.');
                         break;
                 }
-
+    
                 document.querySelector('.state-text').style.visibility = 'visible';
-
+    
                 setTimeout(() => {
                     document.querySelector('.state-text').style.visibility = 'hidden';
                 }, 4000);
-
+    
                 setShowAlert(false);
             } catch (err) {
                 console.log(err);
             }
         } catch (err) {
+            setStateController(false);
+            setStateMSG('Error creating account.');
             console.log(err);
         }
     }
@@ -177,7 +184,8 @@ function BizumPage({ session, accounts, account, setAccount }) {
                 const result = await res.json();
 
                 switch(result) {
-                    case '-7' || -7:
+                    case '-7':
+                    case -7:
                         setStateController(false);
                         setStateMSG('We are facing some problems. Try again later.');
                         break;
