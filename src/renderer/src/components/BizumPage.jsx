@@ -4,7 +4,7 @@ import '../styles/BizumPage.css'
 import AccountCard from './AccountCard.jsx'
 import CustomAlertAccounts from './CustomAlertAccounts.jsx';
 
-function BizumPage({ session, accounts, account, setAccount }) {
+function BizumPage({ session, accounts, setAccounts, account, setAccount }) {
     const [currentAccount, setCurrentAccount]   = useState(null);
     const [password, setPassword]               = useState(null);
     const [receptorPhone, setReceptorPhone]     = useState(null);
@@ -155,6 +155,8 @@ function BizumPage({ session, accounts, account, setAccount }) {
                 }, 4000);
     
                 setShowAlert(false);
+
+                await fetchAccounts();
             } catch (err) {
                 console.log(err);
             }
@@ -196,6 +198,30 @@ function BizumPage({ session, accounts, account, setAccount }) {
                 }, 4000);
             } catch (err) {
                 console.log(err);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }    
+    
+    async function fetchAccounts() {
+        try {
+            const res = await fetch(`http://localhost:8080/account/list?username=${username}&password=${password}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+    
+            if (!res.ok) {
+                throw new Error('Error en la solicitud de cuentas.');
+            }
+    
+            try {
+                const result = await res.json();
+                setAccounts(result['accounts']);
+            } catch(err) {
+                setAccounts([]);
             }
         } catch (err) {
             console.log(err);
