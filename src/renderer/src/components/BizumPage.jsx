@@ -206,7 +206,7 @@ function BizumPage({ session, accounts, setAccounts, account, setAccount }) {
     
     async function fetchAccounts() {
         try {
-            const res = await fetch(`http://localhost:8080/account/list?username=${username}&password=${password}`, {
+            const res = await fetch(`http://localhost:8080/account/list?username=${session['username']}&password=${inputPassValue}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

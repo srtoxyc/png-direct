@@ -15,17 +15,19 @@
 
 .start-accounts {
     height: 18%;
-    width: 100%;
+    width: 80%;
 
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 
     justify-content: center;
     align-items: center;
     align-content: center;
 
-    gap: 20px;
+    margin-left: 2%;
+
+    gap: 10px;
 
     list-style: none;
 }
