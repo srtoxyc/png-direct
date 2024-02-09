@@ -134,8 +134,6 @@ function BizumPage({ session, accounts, account, setAccount }) {
     
             try {
                 const result = await res.json();
-
-                console.log(result);
     
                 switch(result) {
                     case '-7':
