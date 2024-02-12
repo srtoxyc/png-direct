@@ -14,7 +14,6 @@
 }
 
 .start-accounts {
-    height: 18%;
     width: 80%;
 
     display: flex;
@@ -26,6 +25,7 @@
     align-content: center;
 
     margin-left: 2%;
+    margin-top: 5%;
 
     gap: 10px;
 
@@ -33,8 +33,8 @@
 }
 
 .bizum-form-box {
-    height: 50%;
-    width: 50%;
+    height: 400px;
+    width: 420px;
 
     position: relative;
 
